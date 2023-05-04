@@ -11,6 +11,7 @@ class Record extends Model
 
     protected $fillable = [
         'amount',
-        'product'
+        'product',
+        'payable_class'
     ];
 }

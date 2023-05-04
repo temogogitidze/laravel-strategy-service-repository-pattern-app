@@ -24,6 +24,8 @@ class PaymentController extends Controller
           $validatedData['product']
         );
 
+        $paymentRecord->set('payable_class', $paymentService::class);
+
         try {
             $record = $this->service->storeRecordData($paymentRecord);
         } catch (\Exception $e) {
