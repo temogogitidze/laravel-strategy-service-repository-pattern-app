@@ -15,7 +15,7 @@ class PaymentServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->app->bind(PaymentService::class, function ($app) {
+        $this->app->bind(PaymentService::class, function () {
             if (config('services.payment-driver') === 'paypal') {
                 return new PaypalPayment();
             }
