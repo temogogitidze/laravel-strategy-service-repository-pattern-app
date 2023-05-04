@@ -2,17 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Payment\PaymentRequest;
 use App\Models\PaypalPayment;
+use App\Services\Payment\PaymentService;
 use Illuminate\Http\JsonResponse;
 
 class PaymentController extends Controller
 {
 
-    public function __invoke(PaypalPayment $paypalPayment): JsonResponse
+    public function __invoke(PaymentRequest $request, PaymentService $paymentService): JsonResponse
     {
-        $paymentMessage = $paypalPayment->processPayment(
-          500,
-          'iphone'
+        $validatedData = $request->validated();
+        $paymentMessage = $paymentService->processPayment(
+          $validatedData['amount'],
+          $validatedData['product']
         );
 
         return response()->json(['paymentMessage' => $paymentMessage]);

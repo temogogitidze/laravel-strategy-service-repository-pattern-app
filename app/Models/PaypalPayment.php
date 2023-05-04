@@ -2,10 +2,11 @@
 
 namespace App\Models;
 
+use App\Services\Payment\PaymentService;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class PaypalPayment extends Model
+class PaypalPayment extends Model implements PaymentService
 {
     use HasFactory;
 
