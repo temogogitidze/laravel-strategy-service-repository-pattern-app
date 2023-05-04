@@ -17,7 +17,7 @@ class StripePayment extends Model implements PaymentService
 
         $paymentRecord = new ParameterBag([
             'product' => $product,
-            'amount' => $amount
+            'amount' => $amount,
         ]);
 
         return [$paymentMessage, $paymentRecord];
