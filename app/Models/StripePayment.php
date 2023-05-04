@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Services\Payment\PaymentService;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Symfony\Component\HttpFoundation\ParameterBag;
 
 class StripePayment extends Model implements PaymentService
 {
@@ -14,6 +15,11 @@ class StripePayment extends Model implements PaymentService
     {
         $paymentMessage = "Stripe transaction for {$product} ({$amount}) was successful";
 
-        return $paymentMessage;
+        $paymentRecord = new ParameterBag([
+            'product' => $product,
+            'amount' => $amount
+        ]);
+
+        return $paymentMessage; $paymentRecord;
     }
 }
