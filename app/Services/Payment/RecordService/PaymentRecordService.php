@@ -8,6 +8,5 @@ class PaymentRecordService implements PaymentRecordServiceInterface
 {
     public function storeRecordData(ParameterBag $recordData)
     {
-        dd($recordData);
     }
 }

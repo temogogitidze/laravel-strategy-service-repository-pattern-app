@@ -19,6 +19,7 @@ class PaymentController extends Controller
     public function __invoke(PaymentRequest $request, PaymentService $paymentService): JsonResponse
     {
         $validatedData = $request->validated();
+
         [$paymentMessage, $paymentRecord] = $paymentService->processPayment(
           $validatedData['amount'],
           $validatedData['product']
@@ -30,7 +31,7 @@ class PaymentController extends Controller
             throw new HttpException(500, 'Could not store record');
         }
 
-        return response()->json(['paymentMessage' => $paymentMessage]);
+        return response()->json(['payment message' => $paymentMessage]);
     }
 
 }

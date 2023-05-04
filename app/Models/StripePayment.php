@@ -11,7 +11,7 @@ class StripePayment extends Model implements PaymentService
 {
     use HasFactory;
 
-    public function processPayment(int $amount, string $product): string
+    public function processPayment(int $amount, string $product): array
     {
         $paymentMessage = "Stripe transaction for {$product} ({$amount}) was successful";
 
@@ -20,6 +20,6 @@ class StripePayment extends Model implements PaymentService
             'amount' => $amount
         ]);
 
-        return $paymentMessage; $paymentRecord;
+        return [$paymentMessage, $paymentRecord];
     }
 }
